@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-color: ffc8dd; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.OrderFormController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="700.0" layoutX="400.0" layoutY="80.0" opacity="0.8">
+         <image>
+            <Image url="@../assest/Order.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="140.0" layoutY="210.0" text="Customer ID">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="120.0" text="Order ID">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemName" layoutX="1040.0" layoutY="150.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="390.0" text="Qty">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="1040.0" layoutY="120.0" text="Item Name">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="1040.0" layoutY="420.0" onAction="#txtQtyOnAction" prefHeight="40.0" prefWidth="188.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="300.0" text="Qty On Hand">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="1240.0" layoutY="420.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35; -fx-border-color: black; -fx-border-radius: 35;" text="Add to cart" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblOrderDetails" layoutX="50.0" layoutY="480.0" opacity="0.6" prefHeight="200.0" prefWidth="1400.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="243.3333282470703" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="238.6666717529297" text="Item Name" />
+            <TableColumn fx:id="colUnitPrice" minWidth="0.0" prefWidth="192.0" text="Unit Price" />
+            <TableColumn fx:id="colItemQty" prefWidth="225.0" text="Qty" />
+            <TableColumn fx:id="colTotalAmount" prefWidth="200.0" text="Total amount" />
+            <TableColumn fx:id="colDeleteItem" prefWidth="180.00006103515625" text="Delete Item" />
+         </columns>
+      </TableView>
+      <Label layoutX="140.0" layoutY="300.0" text="Date">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="1350.0" layoutX="100.0" layoutY="100.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+      <TextField fx:id="txtSearchItem" layoutX="1190.0" layoutY="30.0" onAction="#txtItemSearchOnAction" opacity="0.51" prefHeight="40.0" prefWidth="150.0" promptText="Search Item" style="-fx-background-radius: 35; -fx-border-radius: 35; -fx-border-color: black;" />
+      <JFXButton buttonType="RAISED" layoutX="1350.0" layoutY="30.0" onAction="#btnSearchItemOnAction" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35; -fx-border-color: black; -fx-border-radius: 35;" text="Search" textFill="#f5efef" />
+      <DatePicker fx:id="dpOrderDate" layoutX="140.0" layoutY="330.0" prefHeight="40.0" prefWidth="350.0" />
+      <TextField fx:id="txtQtyOnHand" layoutX="1040.0" layoutY="330.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-radius: 35;" />
+      <ComboBox fx:id="cmbCustomerId" layoutX="140.0" layoutY="240.0" onAction="#cmbCustomerIdOnAction" prefHeight="40.0" prefWidth="350.0" />
+      <Label layoutX="140.0" layoutY="390.0" text="Item Code">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbItemCode" layoutX="140.0" layoutY="420.0" onAction="#cmbItemCodeOnAction" prefHeight="40.0" prefWidth="350.0" />
+      <TextField fx:id="txtOrderId" layoutX="140.0" layoutY="150.0" onAction="#txtOrderIdSerachOnAction" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="210.0" text="Unit Price">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUnitPrice" layoutX="1040.0" layoutY="240.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="180.0" layoutY="700.0" text="Net Total  :">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" layoutX="330.0" layoutY="700.0" onDragDetected="#lblNetTotalOnAction" prefHeight="26.0" prefWidth="211.0" textFill="#ac1de4">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="1221.0" layoutY="692.0" onAction="#btnOrderPlaceOnAction" style="-fx-background-color: #D980FA; -fx-background-radius: 35; -fx-border-color: black; -fx-border-radius: 35;" text="Order Confirm" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblCustomerName" layoutX="470.0" layoutY="245.0" onDragDetected="#lblNetTotalOnAction" textFill="#ac1de4">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="500.0" layoutY="25.0" text="ORDER MANAGEMENT" textAlignment="CENTER">
+         <font>
+            <Font name="Ubuntu Bold" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.40476190476190477" endY="0.5952380952380952" startX="0.40476190476190477">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.1174496644295302">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7631579041481018" green="0.2367202788591385" blue="0.552582859992981" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="942.0" layoutY="692.0" onAction="#btnPrintCertificateOnAction" prefHeight="42.0" prefWidth="263.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35; -fx-border-color: black; -fx-border-radius: 35;" text="Print Certificate" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

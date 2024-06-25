@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-radius: 35; -fx-background-color: ffc8dd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.EmployeeFormController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="700.0" layoutX="350.0" layoutY="40.0" opacity="0.8">
+         <image>
+            <Image url="@../assest/Employee.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="450.0" layoutY="25.0" text="EMPLOYEE MANAGEMENT" textAlignment="CENTER">
+         <font>
+            <Font name="Ubuntu Bold" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.40476190476190477" endY="0.5952380952380952" startX="0.40476190476190477">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.1174496644295302">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7631579041481018" green="0.2367202788591385" blue="0.552582859992981" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="140.0" layoutY="300.0" text="Full Name">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmplyeeName" layoutX="140.0" layoutY="330.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="140.0" layoutY="190.0" text="Employee ID">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmployeeTel" layoutX="1040.0" layoutY="330.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" text="+94" />
+      <Label layoutX="1040.0" layoutY="190.0" text="Address">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmployeeId" layoutX="140.0" layoutY="220.0" onAction="#txtEmployeeIdSearchOnAction" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="300.0" text="Tel On">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmplyeeAddress" layoutX="1040.0" layoutY="220.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <JFXButton buttonType="RAISED" layoutX="1310.0" layoutY="402.0" onAction="#btnEmployeeSaveOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35;" text="Save" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1175.0" layoutY="400.0" onAction="#btnEmployeeUpdateOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #B53471; -fx-background-radius: 35;" text="Update" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1040.0" layoutY="399.0" onAction="#btnEmployeeDeleteOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: 5e548e; -fx-background-radius: 35;" text="Delete" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblEmployee" layoutX="50.0" layoutY="480.0" opacity="0.6" prefHeight="255.0" prefWidth="1400.0">
+         <columns>
+            <TableColumn fx:id="colEmployeeId" prefWidth="190.0" text="Employee ID" />
+            <TableColumn fx:id="colEmployeeName" prefWidth="291.66668701171875" text="Employee Name" />
+            <TableColumn minWidth="0.0" prefWidth="0.0" />
+            <TableColumn fx:id="colEmployeeAddress" prefWidth="519.0" text="Employee Address" />
+            <TableColumn fx:id="colEmployeeTel" prefWidth="398.0" text="Telephone No" />
+         </columns>
+      </TableView>
+      <Line endX="1350.0" layoutX="100.0" layoutY="100.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+      <JFXButton buttonType="RAISED" layoutX="910.0" layoutY="399.0" onAction="#btnEmployeeClearOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: be95c4; -fx-background-radius: 35;" text="Clear" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtSearchEmplyee" layoutX="1190.0" layoutY="30.0" opacity="0.51" prefHeight="40.0" prefWidth="150.0" promptText="Search Customer" style="-fx-background-radius: 35;" />
+      <JFXButton buttonType="RAISED" layoutX="1350.0" layoutY="30.0" onAction="#btnSearchEmployeeOnAction" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35;" text="Search" textFill="#f5efef" />
+      <Label fx:id="employeeIdValidate" layoutX="155.0" layoutY="263.0" prefHeight="16.0" prefWidth="320.0" textFill="#d32828" />
+      <Label fx:id="employeeNameValidate" layoutX="156.0" layoutY="373.0" prefHeight="16.0" prefWidth="320.0" textFill="#d32828" />
+      <Label fx:id="employeeAddressValidate" layoutX="1065.0" layoutY="263.0" prefHeight="16.0" prefWidth="320.0" textFill="#d32828" />
+      <Label fx:id="employeeTelValidate" layoutX="1065.0" layoutY="370.0" prefHeight="16.0" prefWidth="320.0" textFill="#d32828" />
+   </children>
+</Pane>

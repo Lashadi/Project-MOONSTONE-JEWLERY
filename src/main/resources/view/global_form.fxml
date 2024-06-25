@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mianpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1700.0" style="-fx-background-color: #FDA7DF; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.GlobalFormController">
+   <children>
+      <Pane layoutX="50.0" layoutY="40.0" prefHeight="100.0" prefWidth="1600.0" style="-fx-background-color: #B53471; -fx-background-radius: 50;">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="70.0" layoutY="20.0" onAction="#btnHomeOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="20.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="CUSTOMER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="470.0" layoutY="20.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="EMPLOYEE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="670.0" layoutY="20.0" onAction="#btnItemOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="ITEM" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="870.0" layoutY="20.0" onAction="#btnOrdersOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="ORDERS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1070.0" layoutY="20.0" onAction="#btnSupplierOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="SUPPLIER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1370.0" layoutY="20.0" onAction="#btnLogoutOnAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #B53471; -fx-background-radius: 50; -fx-border-color: #ffbe76; -fx-border-radius: 35; -fx-border-width: 5;" styleClass="dashBoard-button" stylesheets="@../values/style.css" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="50.0" layoutY="160.0" prefHeight="786.0" prefWidth="1600.0" style="-fx-background-color: white; -fx-background-radius: 35;">
+         <children>
+            <Pane fx:id="paginPane" layoutX="50.0" layoutY="20.0" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-color: ffc8dd; -fx-background-radius: 35;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--<?import javafx.scene.shape.Rectangle?>-->
+
+<AnchorPane fx:id="ancLogin" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1400.0">
+         <image>
+            <Image url="@../assest/LoginPagePicture.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f1a7c85" height="700.0" layoutX="50.0" layoutY="100.0" stroke="#8f1a7c80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" strokeWidth="20.0" width="500.0" />
+      <TextField fx:id="txtUserId" layoutX="80.0" layoutY="352.0" onAction="#txtUseNameOnAction" prefHeight="40.0" prefWidth="440.0" promptText="Input your user name" style="-fx-background-radius: 45;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <JFXButton buttonType="RAISED" layoutX="152.0" layoutY="525.0" onAction="#btnSignInOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: E8D666; -fx-background-radius: 45;" text="Sign In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <PasswordField fx:id="txtPassword" layoutX="80.0" layoutY="453.0" onAction="#txtPasswordOnAction" prefHeight="40.0" prefWidth="440.0" promptText="Input Your password" style="-fx-background-radius: 45;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="79.0" layoutY="310.0" text="USER NAME" textFill="#e8d666">
+         <font>
+            <Font name="Ubuntu Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="152.0" layoutY="657.0" onAction="#btnSignUpOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: E8D666; -fx-background-radius: 45;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="131.0" layoutY="750.0" text="Don't have an employee account?" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="253.0" layoutY="597.0" text="OR">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.838095238095238" focusAngle="-24.78" focusDistance="-1.0" radius="0.627906976744186">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5600000023841858" green="0.10639999806880951" blue="0.5397757887840271" opacity="0.7599999904632568" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.1174496644295302">
+                     <color>
+                        <Color red="0.5600000023841858" green="0.10639999806880951" blue="0.5397757887840271" opacity="0.7599999904632568" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="79.0" layoutY="410.0" text="PASSWORD" textFill="#e8d666">
+         <font>
+            <Font name="Ubuntu Bold" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="149.0" layoutY="30.0">
+         <image>
+            <Image url="@../assest/LOGO.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

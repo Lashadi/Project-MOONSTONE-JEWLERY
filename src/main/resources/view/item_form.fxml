@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-color: ffc8dd; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.ItemFormControllerr">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="700.0" layoutX="400.0" layoutY="70.0" opacity="0.7">
+         <image>
+            <Image url="@../assest/Items.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="140.0" layoutY="250.0" text="Item Name">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemName" layoutX="140.0" layoutY="280.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="140.0" layoutY="150.0" text="Item Code">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="1040.0" layoutY="180.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="140.0" layoutY="350.0" text="Category">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemCode" layoutX="140.0" layoutY="180.0" onAction="#txtItemCodeSearchOnAction" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="150.0" text="Qty">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemCategory" layoutX="140.0" layoutY="380.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label layoutX="1040.0" layoutY="350.0" text="Date">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="1310.0" layoutY="450.0" onAction="#btnItemSaveOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35;" text="Save" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1175.0" layoutY="450.0" onAction="#btnItemUpdateOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #B53471; -fx-background-radius: 35;" text="Update" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1040.0" layoutY="450.0" onAction="#btnItemDeleteOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #B53471; -fx-background-radius: 35;" text="Delete" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblItem" layoutX="50.0" layoutY="511.0" opacity="0.6" prefHeight="225.0" prefWidth="1400.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="243.3333282470703" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="403.0" text="Item Name" />
+            <TableColumn fx:id="colCategory" minWidth="0.0" prefWidth="203.0" text="Category" />
+            <TableColumn fx:id="colItemQtyOnHand" prefWidth="232.33331298828125" text="Qty On Hand" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="197.66668701171875" text="Unit Price" />
+         </columns>
+      </TableView>
+      <Label layoutX="1040.0" layoutY="250.0" text="Unit Price">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="1350.0" layoutX="100.0" layoutY="100.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+      <JFXButton buttonType="RAISED" layoutX="910.0" layoutY="450.0" onAction="#btnItemClearOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #6F1E51; -fx-background-radius: 35;" text="Clear" textFill="#f5efef">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtSearchItem" layoutX="1190.0" layoutY="30.0" opacity="0.51" prefHeight="40.0" prefWidth="150.0" promptText="Search Item" style="-fx-background-radius: 35;" />
+      <JFXButton buttonType="RAISED" layoutX="1350.0" layoutY="30.0" onAction="#btnSearchItemOnAction" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #D980FA; -fx-background-radius: 35;" text="Search" textFill="#f5efef" />
+      <DatePicker fx:id="dpDate" layoutX="1040.0" layoutY="380.0" prefHeight="40.0" prefWidth="350.0" />
+      <TextField fx:id="txtUnitPrice" layoutX="1040.0" layoutY="280.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-radius: 35;" />
+      <Label fx:id="stockNameValidate" layoutX="140.0" layoutY="320.0" prefHeight="16.0" prefWidth="317.0" textFill="#d31919" />
+      <Label fx:id="stockCategoryValidate" layoutX="140.0" layoutY="420.0" prefHeight="16.0" prefWidth="317.0" textFill="#d31919" />
+      <Label fx:id="stockQtyValidate" layoutX="1040.0" layoutY="220.0" prefHeight="16.0" prefWidth="317.0" textFill="#d31919" />
+      <Label fx:id="stockUnitPriceValidate" layoutX="1040.0" layoutY="320.0" prefHeight="16.0" prefWidth="317.0" textFill="#d31919" />
+      <Label layoutX="500.0" layoutY="25.0" text="ITEM  MANAGEMENT" textAlignment="CENTER">
+         <font>
+            <Font name="Ubuntu Bold" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.40476190476190477" endY="0.5952380952380952" startX="0.40476190476190477">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.1174496644295302">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7631579041481018" green="0.2367202788591385" blue="0.552582859992981" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</Pane>

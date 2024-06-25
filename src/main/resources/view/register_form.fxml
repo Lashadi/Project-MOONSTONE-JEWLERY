@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.RegisterFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f0f40" height="700.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="50.0" layoutY="10.0">
+         <image>
+            <Image url="@../assest/LOGO.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="40.0" layoutY="240.0" prefHeight="16.0" prefWidth="118.0" text="New User Id" textFill="#e8dede">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="350.0" text="New User Name" textFill="#fcf0f0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="460.0" text="Password" textFill="#eee4e4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="456.0" />
+      <TextField fx:id="txtNewUserId" layoutX="40.0" layoutY="265.0" opacity="0.6" prefHeight="46.0" prefWidth="316.0" promptText="Enter new id" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtNewUserName" layoutX="40.0" layoutY="375.0" opacity="0.6" prefHeight="46.0" prefWidth="316.0" promptText="Enter user name" style="-fx-background-radius: 50;" />
+      <PasswordField fx:id="txtPassword" layoutX="40.0" layoutY="485.0" opacity="0.6" prefHeight="46.0" prefWidth="316.0" promptText="Enter password" style="-fx-background-radius: 50;" />
+      <JFXButton buttonType="RAISED" layoutX="259.0" layoutY="582.0" onAction="#btnConfirmOnAction" style="-fx-background-color: b5838d; -fx-background-radius: 35;" text="Confirm" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

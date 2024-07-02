@@ -39,7 +39,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
-        return false;
+        return SQLUtil.execute("INSERT INTO Customer VALUES (?,?,?,?,?,?)",
+                entity.getId(),
+                entity.getName(),
+                entity.getAddress(),
+                entity.getTel(),
+                entity.getEmail(),
+                entity.getUserId());
     }
 
     @Override

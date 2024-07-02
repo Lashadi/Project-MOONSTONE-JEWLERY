@@ -42,7 +42,14 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public boolean saveCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
-        return false;
+        return customerDAO.save(new Customer(
+                dto.getId(),
+                dto.getName(),
+                dto.getAddress(),
+                dto.getTel(),
+                dto.getEmail(),
+                dto.getUserId()
+        ));
     }
 
     @Override

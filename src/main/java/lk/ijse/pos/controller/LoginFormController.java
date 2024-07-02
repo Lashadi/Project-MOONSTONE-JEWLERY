@@ -24,6 +24,10 @@ public class LoginFormController {
     @FXML
     private TextField txtUserId;
 
+    String uId;
+    String uName;
+    String uPassword;
+
     @FXML
     void btnSignInOnAction(ActionEvent event) {
 

@@ -3,11 +3,7 @@ package lk.ijse.pos.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.pos.bo.BOFactory;
@@ -78,6 +74,13 @@ public class CustomerFormController implements Initializable {
     @FXML
     private TextField txtSearchCustomer;
 
+    String cusId = txtCustomerId.getText();
+    String cusName = txtCustomerName.getText();
+    String cusAddress = txtCustomerAddress.getText();
+    String cusTel = txtCustomerTel.getText();
+    String cusEmail = txtCustomerEmail.getText();
+    String userId = new LoginFormController().uId;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -111,8 +114,15 @@ public class CustomerFormController implements Initializable {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
-    @FXML
+    private void clearTextFields(){
+        txtCustomerId.clear();
+        txtCustomerName.clear();
+        txtCustomerAddress.clear();
+        txtCustomerTel.clear();
+        txtCustomerEmail.clear();
+    }
 
+    @FXML
     void btnClearOnAction(ActionEvent event) {
 
     }
@@ -124,7 +134,16 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnCustomerSaveOnAction(ActionEvent event) {
-
+        try {
+            boolean isSaved = customerBO.saveCustomer(new CustomerDTO(cusId, cusName, cusAddress, cusTel, cusEmail, userId));
+            if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer has been saved successfully").show();
+                clearTextFields();
+                loadAllCustomers();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, "Customer not saved").show();
+        }
     }
 
     @FXML

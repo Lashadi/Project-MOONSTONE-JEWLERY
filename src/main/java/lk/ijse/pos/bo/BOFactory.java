@@ -1,5 +1,6 @@
 package lk.ijse.pos.bo;
 
+import lk.ijse.pos.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.pos.bo.custom.impl.UserBOImpl;
 import lk.ijse.pos.dao.SuperDAO;
 import lk.ijse.pos.dao.custom.UserDAO;
@@ -21,6 +22,8 @@ public class BOFactory {
         switch (boType){
             case USER:
                 return new UserBOImpl();
+            case CUSTOMER:
+                return new CustomerBOImpl();
             default:
                 return null;
         }

@@ -14,12 +14,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public String generateNextCustomerId() throws SQLException {
+    public String generateId() throws SQLException {
         return "";
     }
 
     @Override
-    public List<User> getAllCustomer() throws SQLException {
+    public List<User> getAll() throws SQLException {
         return List.of();
     }
 

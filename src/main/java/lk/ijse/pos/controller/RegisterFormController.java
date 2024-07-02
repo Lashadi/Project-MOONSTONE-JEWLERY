@@ -33,7 +33,7 @@ public class RegisterFormController {
 
         boolean isSaved = false;
         try {
-            isSaved = userBO.save(new UserDTO(userId, userName, password));
+            isSaved = userBO.saveUser(new UserDTO(userId, userName, password));
 
             if(isSaved){
                 new Alert(Alert.AlertType.INFORMATION, "User registered successfully").show();

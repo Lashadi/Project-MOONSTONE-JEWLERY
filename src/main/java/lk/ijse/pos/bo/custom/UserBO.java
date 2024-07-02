@@ -14,7 +14,7 @@ public interface UserBO extends SuperBO {
 
     public List<UserDTO> getAllCustomer() throws SQLException;
 
-    public boolean save(UserDTO dto) throws SQLException, ClassNotFoundException;
+    public boolean saveUser(UserDTO dto) throws SQLException, ClassNotFoundException;
 
     public boolean update(UserDTO dto) throws SQLException;
 

@@ -1,6 +1,7 @@
 package lk.ijse.pos.dao;
 
 import lk.ijse.pos.dao.custom.UserDAO;
+import lk.ijse.pos.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.pos.dao.custom.impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -18,6 +19,8 @@ public class DAOFactory {
         switch (daoType){
             case USER:
                 return new UserDAOImpl();
+            case CUSTOMER:
+                return new CustomerDAOImpl();
             default:
                 return null;
         }

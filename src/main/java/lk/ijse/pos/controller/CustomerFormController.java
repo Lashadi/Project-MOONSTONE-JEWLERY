@@ -124,12 +124,33 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        txtCustomerName.clear();
+        txtCustomerAddress.clear();
+        txtCustomerTel.clear();
+        txtCustomerEmail.clear();
 
     }
 
     @FXML
     void btnCustomerDeleteOnAction(ActionEvent event) {
+        tblCustomer.getSelectionModel().getSelectedItem().getId();
+        try {
+            if(!existCustomer(cusId)) {
+                new Alert(Alert.AlertType.ERROR, "Customer not found" + cusId).show();
+            }
+            customerBO.deleteCustomer(cusId);
+             tblCustomer.getItems().remove(tblCustomer.getSelectionModel().getSelectedItem());
+             tblCustomer.getSelectionModel().clearSelection();
+             clearTextFields();
 
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,"Failed to delete customer" + cusId).show();
+        }
+
+    }
+
+    private boolean existCustomer(String cusId) throws SQLException {
+        return  customerBO.deleteCustomer(cusId);
     }
 
     @FXML

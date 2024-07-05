@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface CrudDAO <T> extends SuperDAO{
-    public String generateId() throws SQLException;
+    public ResultSet generateId() throws SQLException, ClassNotFoundException;
 
     public List<T> getAll() throws SQLException, ClassNotFoundException;
 

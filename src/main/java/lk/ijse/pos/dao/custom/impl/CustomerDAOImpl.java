@@ -16,9 +16,10 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public String generateId() throws SQLException {
-        return "";
+    public ResultSet generateId() throws SQLException {
+        return null;
     }
+
 
     @Override
     public List<Customer> getAll() throws SQLException, ClassNotFoundException {

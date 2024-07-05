@@ -7,6 +7,7 @@ import lk.ijse.pos.dao.custom.impl.UserDAOImpl;
 import lk.ijse.pos.dto.UserDTO;
 import lk.ijse.pos.entity.User;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,12 +19,13 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public String generateNextCustomerId() throws SQLException {
-        return "";
+    public ResultSet generateNextUserId() throws SQLException, ClassNotFoundException {
+        return userDAO.generateId();
     }
 
+
     @Override
-    public List<UserDTO> getAllCustomer() throws SQLException {
+    public List<UserDTO> getAllUser() throws SQLException {
         return List.of();
     }
 
@@ -33,17 +35,18 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public boolean update(UserDTO dto) throws SQLException {
+    public boolean updateUser(UserDTO dto) throws SQLException {
         return false;
     }
 
     @Override
-    public User searchById(String id) throws SQLException {
+    public User searchByIdUserId(String id) throws SQLException {
         return null;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean deleteUser(String id) throws SQLException {
         return false;
     }
+
 }

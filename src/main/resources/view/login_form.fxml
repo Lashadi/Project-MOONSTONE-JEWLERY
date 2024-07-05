@@ -29,7 +29,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <JFXButton buttonType="RAISED" layoutX="152.0" layoutY="525.0" onAction="#btnSignInOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: E8D666; -fx-background-radius: 45;" text="Sign In" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="152.0" layoutY="525.0" onAction="#btnSignInClickOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: E8D666; -fx-background-radius: 45;" text="Sign In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>

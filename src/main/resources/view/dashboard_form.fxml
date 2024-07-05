@@ -6,7 +6,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-color: ffc8dd; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.DashboardFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-color: ffc8dd; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.DashboardFormController">
    <children>
       <PieChart fx:id="pieChart" layoutX="100.0" layoutY="300.0" prefHeight="350.0" prefWidth="600.0" />
       <BarChart fx:id="barChart" layoutX="800.0" layoutY="300.0" prefHeight="350.0" prefWidth="600.0">

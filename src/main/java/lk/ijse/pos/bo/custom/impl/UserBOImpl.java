@@ -7,6 +7,7 @@ import lk.ijse.pos.dao.custom.impl.UserDAOImpl;
 import lk.ijse.pos.dto.UserDTO;
 import lk.ijse.pos.entity.User;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -47,6 +48,11 @@ public class UserBOImpl implements UserBO {
     @Override
     public boolean deleteUser(String id) throws SQLException {
         return false;
+    }
+
+    @Override
+    public ResultSet checkCredential(String userId, String password) throws SQLException, IOException, ClassNotFoundException {
+        return userDAO.checkCredential(userId,password);
     }
 
 }

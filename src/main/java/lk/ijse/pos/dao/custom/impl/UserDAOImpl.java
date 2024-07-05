@@ -1,9 +1,11 @@
 package lk.ijse.pos.dao.custom.impl;
 
+import javafx.scene.layout.AnchorPane;
 import lk.ijse.pos.dao.SQLUtil;
 import lk.ijse.pos.dao.custom.UserDAO;
 import lk.ijse.pos.entity.User;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,6 +14,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User searchByTelephone(String telephone) throws SQLException {
         return null;
+    }
+
+    @Override
+    public ResultSet checkCredential(String userId, String password) throws SQLException, IOException, ClassNotFoundException {
+        return SQLUtil.execute("SELECT * FROM User WHERE uId = ?",userId);
     }
 
     @Override

@@ -1,10 +1,7 @@
 package lk.ijse.pos.dao;
 
 import lk.ijse.pos.dao.custom.UserDAO;
-import lk.ijse.pos.dao.custom.impl.CustomerDAOImpl;
-import lk.ijse.pos.dao.custom.impl.EmployeeDAOImpl;
-import lk.ijse.pos.dao.custom.impl.ItemDAOImpl;
-import lk.ijse.pos.dao.custom.impl.UserDAOImpl;
+import lk.ijse.pos.dao.custom.impl.*;
 
 public class DAOFactory {
     public static DAOFactory daoFactory;
@@ -15,7 +12,7 @@ public class DAOFactory {
         return (daoFactory == null) ? (daoFactory = new DAOFactory()) : daoFactory;
     }
     public enum DAOType{
-        CUSTOMER,EMPLOYEE,ITEM,ORDER,USER
+        CUSTOMER,EMPLOYEE,ITEM,ORDER,ORDER_DETAILS,USER
     }
     public SuperDAO getDaoType(DAOType daoType){
         switch (daoType){
@@ -27,6 +24,10 @@ public class DAOFactory {
                 return new EmployeeDAOImpl();
             case ITEM:
                 return new ItemDAOImpl();
+            case ORDER:
+                return new OrderDAOimpl();
+            case ORDER_DETAILS:
+                return new OrderDetailsDAOImpl();
             default:
                 return null;
         }

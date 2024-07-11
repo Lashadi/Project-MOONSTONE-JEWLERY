@@ -79,4 +79,15 @@ public class ItemDAOImpl implements ItemDAO {
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("DELETE FROM Item WHERE iCode = ?",id);
     }
+
+    @Override
+    public List<String> getItemCodes() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT iCode FROM Item");
+        List<String> itemCodes = new ArrayList<>();
+
+        while (resultSet.next()) {
+            itemCodes.add(resultSet.getString(1));
+        }
+        return itemCodes;
+    }
 }

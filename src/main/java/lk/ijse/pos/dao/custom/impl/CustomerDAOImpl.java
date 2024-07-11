@@ -16,6 +16,17 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
+    public List<String> getCustomerIds() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT cId FROM Customer");
+        List<String> customerIds = new ArrayList<>();
+
+        while (resultSet.next()) {
+            customerIds.add(resultSet.getString(1));
+        }
+        return customerIds;
+    }
+
+    @Override
     public ResultSet generateId() throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("SELECT cId FROM Customer ORDER BY cId DESC LIMIT 1");
     }

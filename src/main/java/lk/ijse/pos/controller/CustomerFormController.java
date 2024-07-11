@@ -1,17 +1,21 @@
 package lk.ijse.pos.controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.pos.bo.BOFactory;
 import lk.ijse.pos.bo.custom.CustomerBO;
 import lk.ijse.pos.dto.CustomerDTO;
+import lk.ijse.pos.dto.UserDTO;
 import lk.ijse.pos.tm.CustomerTm;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -71,21 +75,57 @@ public class CustomerFormController implements Initializable {
     @FXML
     private TextField txtCustomerTel;
 
+    static UserDTO user;
+
     @FXML
     private TextField txtSearchCustomer;
 
-    String cusId = txtCustomerId.getText();
-    String cusName = txtCustomerName.getText();
-    String cusAddress = txtCustomerAddress.getText();
-    String cusTel = txtCustomerTel.getText();
-    String cusEmail = txtCustomerEmail.getText();
-    String userId = new LoginFormController().uId;
+    public static void setUser(UserDTO userDTO) {
+        CustomerFormController.user = userDTO;
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtCustomerId.setText(generateNextCustomerId());
         loadAllCustomers();
         setCellValueFactory();
+    }
+
+    private String generateNextCustomerId() {
+        try {
+            ResultSet resultSet = customerBO.generateNextCustomerId();
+            String currentCustomerId = null;
+            if (resultSet.next()) {
+                currentCustomerId = resultSet.getString(1);
+                return nextCustomerId(currentCustomerId);
+            }
+            return nextCustomerId(null);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextCustomerId(String currentCustomerId) {
+        String next = null;
+        if(currentCustomerId == null){
+            next = "C001";
+        }else {
+            String data = currentCustomerId.replace("C", "");
+            int id = Integer.parseInt(data);
+            id++;
+
+            if(id >= 1 && id <= 10){
+                next = "C00" + id;
+            } else if (id >= 11 && id <= 100) {
+                next = "C0" + id;
+            } else if (id >= 101 && id <= 1000) {
+                next = "C" + id;
+            }
+        }
+        return next;
     }
 
     private void loadAllCustomers() {
@@ -133,28 +173,30 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnCustomerDeleteOnAction(ActionEvent event) {
-        tblCustomer.getSelectionModel().getSelectedItem().getId();
+        String customerId = txtCustomerId.getText();
         try {
-            if(!existCustomer(cusId)) {
-                new Alert(Alert.AlertType.ERROR, "Customer not found" + cusId).show();
+            boolean isDeleted = customerBO.deleteCustomer(customerId);
+            if(isDeleted){
+                new Alert(Alert.AlertType.INFORMATION, "Customer is Deleted").show();
+                clearTextFields();
+                loadAllCustomers();
             }
-            customerBO.deleteCustomer(cusId);
-             tblCustomer.getItems().remove(tblCustomer.getSelectionModel().getSelectedItem());
-             tblCustomer.getSelectionModel().clearSelection();
-             clearTextFields();
-
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"Failed to delete customer" + cusId).show();
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-
-    }
-
-    private boolean existCustomer(String cusId) throws SQLException {
-        return  customerBO.deleteCustomer(cusId);
     }
 
     @FXML
     void btnCustomerSaveOnAction(ActionEvent event) {
+        String cusId = txtCustomerId.getText();
+        String cusName = txtCustomerName.getText();
+        String cusAddress = txtCustomerAddress.getText();
+        String cusTel = txtCustomerTel.getText();
+        String cusEmail = txtCustomerEmail.getText();
+        String userId = user.getUserId();
+
         try {
             boolean isSaved = customerBO.saveCustomer(new CustomerDTO(cusId, cusName, cusAddress, cusTel, cusEmail, userId));
             if(isSaved){
@@ -169,17 +211,60 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnCustomerUpdateOnAction(ActionEvent event) {
+        String cusId = txtCustomerId.getText();
+        String cusName = txtCustomerName.getText();
+        String cusAddress = txtCustomerAddress.getText();
+        String cusTel = txtCustomerTel.getText();
+        String cusEmail = txtCustomerEmail.getText();
+        String userId = user.getUserId();
 
+        try {
+            boolean isUpdated = customerBO.updateCustomer(new CustomerDTO(cusId, cusName, cusAddress, cusTel, cusEmail, userId));
+            if(isUpdated){
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer has been saved successfully").show();
+                clearTextFields();
+                loadAllCustomers();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void btnSearchCustomerOnAction(ActionEvent event) {
-
+        String cusId = txtCustomerId.getText();
+        try {
+            CustomerDTO customerDTO = customerBO.searchByICustomerId(cusId);
+            if(customerDTO != null){
+                txtCustomerId.setText(customerDTO.getId());
+                txtCustomerName.setText(customerDTO.getName());
+                txtCustomerAddress.setText(customerDTO.getAddress());
+                txtCustomerTel.setText(customerDTO.getTel());
+                txtCustomerEmail.setText(customerDTO.getEmail());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void tblCustomerOnClick(MouseEvent event) {
+        TablePosition tp = tblCustomer.getSelectionModel().getSelectedCells().get(0);
+        int row = tp.getRow();
+        ObservableList<TableColumn<CustomerTm,?>> columns = tblCustomer.getColumns();
 
+
+        txtCustomerId.setText(columns.get(0).getCellData(row).toString());
+        txtCustomerName.setText(columns.get(1).getCellData(row).toString());
+        txtCustomerAddress.setText(columns.get(2).getCellData(row).toString());
+        txtCustomerTel.setText(columns.get(3).getCellData(row).toString());
+        txtCustomerEmail.setText(columns.get(4).getCellData(row).toString());
+
+        tblCustomer.setCursor(Cursor.HAND);
     }
 
     @FXML

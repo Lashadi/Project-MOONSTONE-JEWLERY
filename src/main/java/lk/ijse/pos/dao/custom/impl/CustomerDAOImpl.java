@@ -16,10 +16,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public ResultSet generateId() throws SQLException {
-        return null;
+    public ResultSet generateId() throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("SELECT cId FROM Customer ORDER BY cId DESC LIMIT 1");
     }
-
 
     @Override
     public List<Customer> getAll() throws SQLException, ClassNotFoundException {
@@ -50,17 +49,34 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean update(Customer entity) throws SQLException {
-        return false;
+    public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("UPDATE Customer SET cName = ?, cAddress = ?, cTel = ?, cEmail = ?, uId = ? WHERE cId = ?",
+                entity.getName(),
+                entity.getAddress(),
+                entity.getTel(),
+                entity.getEmail(),
+                entity.getUserId(),
+                entity.getId());
     }
 
     @Override
-    public Customer searchById(String id) throws SQLException {
-        return null;
+    public Customer searchById(String id) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM Customer WHERE cId = ?", id);
+        Customer customer = null;
+        if (resultSet.next()) {
+            String cID = resultSet.getString(1);
+            String cName = resultSet.getString(2);
+            String cAddress = resultSet.getString(3);
+            String cTel = resultSet.getString(4);
+            String cEmail = resultSet.getString(5);
+            String uID = resultSet.getString(6);
+            customer = new Customer(cID, cName, cAddress, cTel, cEmail, uID);
+        }
+        return customer;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
-        return false;
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("DELETE FROM Customer WHERE cId = ?",id);
     }
 }

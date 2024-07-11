@@ -7,12 +7,11 @@ use moonstonejewerlary;
 create table User(
                      uId Varchar(6) primary key not null,
                      uName Varchar(10),
-                     uRole Varchar(20),
                      uPassword Varchar(10) not null
 );
 
-INSERT INTO User(uId, uName, uRole, uPassword) VALUES
-                        ('U001', 'Lasha', 'Cashier', '1234');
+INSERT INTO User(uId, uName, uPassword) VALUES
+                        ('U001', 'Lasha', '1234');
 
 
 create table Customer(

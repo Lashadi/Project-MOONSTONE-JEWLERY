@@ -13,7 +13,7 @@ public class DBConnection {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/moonstonejewerlary",
                 "root",
-                "Ijse@123"
+                "iJSE@123"
         );
     }
     public static DBConnection getInstance() throws SQLException {

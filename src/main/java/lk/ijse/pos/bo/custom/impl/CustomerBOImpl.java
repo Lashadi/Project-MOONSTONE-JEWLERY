@@ -6,6 +6,7 @@ import lk.ijse.pos.dao.custom.CustomerDAO;
 import lk.ijse.pos.dto.CustomerDTO;
 import lk.ijse.pos.entity.Customer;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,8 @@ public class CustomerBOImpl implements CustomerBO {
     }
 
     @Override
-    public String generateNextCustomerId() throws SQLException {
-        return "";
+    public ResultSet generateNextCustomerId() throws SQLException, ClassNotFoundException {
+        return customerDAO.generateId();
     }
 
     @Override
@@ -53,17 +54,32 @@ public class CustomerBOImpl implements CustomerBO {
     }
 
     @Override
-    public boolean updateCustomer(CustomerDTO dto) throws SQLException {
-        return false;
+    public boolean updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+        return customerDAO.update(new Customer(
+                dto.getId(),
+                dto.getName(),
+                dto.getAddress(),
+                dto.getTel(),
+                dto.getEmail(),
+                dto.getUserId()
+        ));
     }
 
     @Override
-    public Customer searchByICustomerId(String id) throws SQLException {
-        return null;
+    public CustomerDTO searchByICustomerId(String id) throws SQLException, ClassNotFoundException {
+        Customer customer = customerDAO.searchById(id);
+        return new CustomerDTO(
+                customer.getId(),
+                customer.getName(),
+                customer.getAddress(),
+                customer.getTel(),
+                customer.getEmail(),
+                customer.getUserId()
+        );
     }
 
     @Override
-    public boolean deleteCustomer(String id) throws SQLException {
-        return false;
+    public boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException {
+        return customerDAO.delete(id);
     }
 }

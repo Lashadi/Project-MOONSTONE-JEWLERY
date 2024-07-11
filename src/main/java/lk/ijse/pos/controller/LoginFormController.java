@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.pos.bo.BOFactory;
 import lk.ijse.pos.bo.custom.UserBO;
+import lk.ijse.pos.dto.UserDTO;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -83,6 +84,7 @@ public class LoginFormController  {
 
         String  userName = txtUserId.getText();
         String password = txtPassword.getText();
+        CustomerFormController.setUser(new UserDTO(userName,password));
 
         try {
             ResultSet resultSet = userBO.checkCredential(userName, password);

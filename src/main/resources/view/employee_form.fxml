@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-radius: 35; -fx-background-color: ffc8dd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.moonstonejewerllary.controller.EmployeeFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1500.0" style="-fx-background-radius: 35; -fx-background-color: ffc8dd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.EmployeeFormController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="700.0" layoutX="350.0" layoutY="40.0" opacity="0.8">
          <image>
@@ -86,11 +86,10 @@
             <Font size="23.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblEmployee" layoutX="50.0" layoutY="480.0" opacity="0.6" prefHeight="255.0" prefWidth="1400.0">
+      <TableView fx:id="tblEmployee" layoutX="50.0" layoutY="480.0" onMouseClicked="#tblEmployeeClickOnAction" opacity="0.6" prefHeight="255.0" prefWidth="1400.0">
          <columns>
             <TableColumn fx:id="colEmployeeId" prefWidth="190.0" text="Employee ID" />
             <TableColumn fx:id="colEmployeeName" prefWidth="291.66668701171875" text="Employee Name" />
-            <TableColumn minWidth="0.0" prefWidth="0.0" />
             <TableColumn fx:id="colEmployeeAddress" prefWidth="519.0" text="Employee Address" />
             <TableColumn fx:id="colEmployeeTel" prefWidth="398.0" text="Telephone No" />
          </columns>

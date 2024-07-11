@@ -1,6 +1,8 @@
 package lk.ijse.pos.bo;
 
 import lk.ijse.pos.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.pos.bo.custom.impl.EmployeeBOImpl;
+import lk.ijse.pos.bo.custom.impl.ItemBOImpl;
 import lk.ijse.pos.bo.custom.impl.UserBOImpl;
 import lk.ijse.pos.dao.SuperDAO;
 import lk.ijse.pos.dao.custom.UserDAO;
@@ -15,7 +17,7 @@ public class BOFactory {
         return (boFactory == null) ? boFactory = new BOFactory() : boFactory;
     }
     public enum BOType{
-        USER,CUSTOMER
+        USER,CUSTOMER,EMPLOYEE,ITEM
     }
 
     public SuperBO getBoType(BOType boType){
@@ -24,6 +26,10 @@ public class BOFactory {
                 return new UserBOImpl();
             case CUSTOMER:
                 return new CustomerBOImpl();
+            case EMPLOYEE:
+                return new EmployeeBOImpl();
+            case ITEM:
+                return new ItemBOImpl();
             default:
                 return null;
         }

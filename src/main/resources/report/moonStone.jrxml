@@ -99,10 +99,6 @@ ORDER BY Order_Detail.oId desc;]]>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="0" y="0" width="80" height="70" uuid="176063d0-fd2f-449e-b0c5-02779deaccae"/>
-				<imageExpression><![CDATA["/home/lashadi/Downloads/LOGO.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

@@ -4,6 +4,7 @@ import lk.ijse.pos.dao.DAOFactory;
 import lk.ijse.pos.dao.SQLUtil;
 import lk.ijse.pos.dao.custom.ItemDAO;
 import lk.ijse.pos.entity.Item;
+import lk.ijse.pos.entity.OrderDetails;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -89,5 +90,21 @@ public class ItemDAOImpl implements ItemDAO {
             itemCodes.add(resultSet.getString(1));
         }
         return itemCodes;
+    }
+
+    @Override
+    public boolean updateItemQty(List<OrderDetails> orderDetailsList) throws SQLException, ClassNotFoundException {
+        for(OrderDetails orderDetails : orderDetailsList){
+            if(!updateItemQty(orderDetails)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean updateItemQty(OrderDetails orderDetails) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("UPDATE Item SET iQty = iQty - ? WHERE iCode = ?",
+                orderDetails.getQty(),
+                orderDetails.getItemCode());
     }
 }

@@ -13,17 +13,19 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.pos.bo.BOFactory;
 import lk.ijse.pos.bo.custom.CustomerBO;
 import lk.ijse.pos.bo.custom.ItemBO;
+import lk.ijse.pos.bo.custom.PaymentBO;
 import lk.ijse.pos.bo.custom.PlaceOrderBo;
 import lk.ijse.pos.db.DBConnection;
-import lk.ijse.pos.dto.CustomerDTO;
-import lk.ijse.pos.dto.ItemDTO;
+import lk.ijse.pos.dto.*;
 import lk.ijse.pos.tm.AddToCartTm;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -33,6 +35,7 @@ public class PlaceOrderFormController implements Initializable {
     PlaceOrderBo placeOrderBo = (PlaceOrderBo) BOFactory.getInstance().getBoType(BOFactory.BOType.PLACE_ORDER);
     ItemBO itemBO = (ItemBO) BOFactory.getInstance().getBoType(BOFactory.BOType.ITEM);
     CustomerBO customerBO = (CustomerBO) BOFactory.getInstance().getBoType(BOFactory.BOType.CUSTOMER);
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getInstance().getBoType(BOFactory.BOType.PAYMENT);
 
     @FXML
     private ComboBox<String> cmbCustomerId;
@@ -231,8 +234,59 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     @FXML
-    void btnOrderPlaceOnAction(ActionEvent event) {
+    void btnOrderPlaceOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String orderId = txtOrderId.getText();
+        java.sql.Date date = Date.valueOf(dpOrderDate.getValue());
+        String customerId = cmbCustomerId.getValue();
 
+        OrderDTO order = new OrderDTO(orderId, date, customerId);
+
+        List<OrderDetailsDTO>orderList = new ArrayList<>();
+        double netAmount = 0;
+        for(int i=0; i<tblOrderDetails.getItems().size();i++){
+            AddToCartTm addToCartTm = itemTmObservableList.get(i);
+            OrderDetailsDTO orderDetails = new OrderDetailsDTO(
+                    orderId,
+                    addToCartTm.getItemCode(),
+                    addToCartTm.getUnitPrice(),
+                    addToCartTm.getQty(),
+                    addToCartTm.getTotalAmount()
+            );
+            orderList.add(orderDetails);
+            netAmount += addToCartTm.getTotalAmount();
+        }
+
+        String paymentID = paymentBO.generatePaymentId();
+        PaymentDTO payment = new PaymentDTO(paymentID, customerId, orderId, netAmount, date);
+
+        PlaceOrderDTO placeOrder = new PlaceOrderDTO(order, orderList, payment);
+
+        try {
+            boolean isSaved = placeOrderBo.savePlaceOrder(placeOrder);
+            if (isSaved) {
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Order Completed.Do you want to generate a bill?", yes, no).showAndWait();
+
+                if(type.orElse(no) == yes){
+                    Map<String,Object>parameters = new HashMap<>();
+                    InputStream resource = this.getClass().getResourceAsStream("/report/moonStone.jrxml");
+                    try{
+                        JasperReport jasperReport = JasperCompileManager.compileReport(resource);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DBConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(jasperPrint, false);
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
+                }
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something went wrong").show();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

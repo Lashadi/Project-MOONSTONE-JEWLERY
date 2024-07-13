@@ -8,6 +8,8 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
+import lk.ijse.pos.bo.BOFactory;
+import lk.ijse.pos.bo.custom.ItemBO;
 import lombok.SneakyThrows;
 
 import java.net.URL;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
-
+    ItemBO itemBO = (ItemBO) BOFactory.getInstance().getBoType(BOFactory.BOType.ITEM);
     @FXML
     private BarChart<String, Integer> barChart;
 
@@ -31,15 +33,21 @@ public class DashboardFormController implements Initializable {
     }
 
     private void setBarChart() throws SQLException {
-        /*ObservableList<XYChart.Series<String,Integer>> barChartData = ItemRepo.getBarChartData();
 
-        barChart.setData(barChartData);*/
+        try {
+            ObservableList<XYChart.Series<String,Integer>> barChartData = itemBO.getBarChartData();
+            barChart.setData(barChartData);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     private void setPieChart() {
-   /*     try {
+        try {
             ObservableList<PieChart.Data> obList = FXCollections.observableArrayList();
-            ArrayList<PieChart.Data> data = DashBoardRepo.getPieChartData();
+            ArrayList<PieChart.Data> data = itemBO.getPieChartData();
             for (PieChart.Data datum : data) {
                 obList.add(datum);
             }
@@ -50,7 +58,9 @@ public class DashboardFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
-        }*/
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
